@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - hasura_demo_test_db_data:/var/lib/postgresql/data
+      - hasura_demo_db_data:/var/lib/postgresql/data
     env_file: ./postgres/.env
   hasura:
     ports:
@@ -17,4 +17,4 @@ services:
     env_file: ./hasura/.env
     build: ./hasura
 volumes:
-  hasura_demo_test_db_data:
+  hasura_demo_db_data:
