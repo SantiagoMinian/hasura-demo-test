@@ -1,4 +1,4 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, useSubscription } from '@apollo/client';
 import React from 'react';
 
 
@@ -14,6 +14,18 @@ interface UserVars {
 }
 
 const GET_USERS_BY_NAME = gql`
+  query GetUser($name: String!) {
+    users(where: {name: {_eq: $name}}) {
+      name
+      id
+      created_at
+      updated_at
+    }
+  }
+`;
+
+
+const GET_USERS_BY_NAME_SUB = gql`
   subscription GetUser($name: String!) {
     users(where: {name: {_eq: $name}}) {
       name
@@ -24,10 +36,21 @@ const GET_USERS_BY_NAME = gql`
   }
 `;
 
+const GET_USERS_SUB = gql`
+  subscription GetUsers {
+    users {
+      name
+      id
+      created_at
+      updated_at
+    }
+  }
+`;
+
 const Home: React.FC = () => {
-    const { loading, data, error } = useQuery<{users: User[]}, UserVars>(
-        GET_USERS_BY_NAME,
-          { variables: { name: "Steve Becker" } }
+    const { loading, data, error } = useSubscription<{users: User[]}, UserVars>(
+        GET_USERS_SUB,
+          /* { variables: {  } } */
         );
       
         console.log(loading, data, error)
