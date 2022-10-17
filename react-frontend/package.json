@@ -36,8 +36,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "graphql:schema:download:local": "apollo schema:download --endpoint=http://localhost:8080/v1/graphql graphql-schema.json --header \"X-Hasura-Admin-Secret: adminsecret\"",
-    "graphql:codegen:generate": "apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql/index.ts types",
-    "graphql:codegen:local": "npm run graphql:schema:download:local && npm run graphql:codegen:generate"
+    "graphql:codegen:generate": "apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/**/*.ts* --tagName=gql --addTypename --globalTypesFile=src/types/graphql/index.ts types",
+    "codegen": "npm run graphql:schema:download:local && npm run graphql:codegen:generate"
   },
   "eslintConfig": {
     "extends": [

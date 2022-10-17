@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from './apolloClient';
-import { Home } from './Home/home';
+import { HomeQuery } from './Home/home_query';
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <Home />
+      <HomeQuery />
     </ApolloProvider>
   );
 }
